@@ -48,7 +48,7 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.TrailerA
 
     @Override
     public void onBindViewHolder(@NonNull TrailerAdapter.TrailerAdapterViewHolder holder, int position) {
-        String trailerCount = mContext.getString(R.string.trailer_word) + position;
+        String trailerCount =  mContext.getString(R.string.trailer_word) + " " +position;
         holder.mTrailerIdTextView.setText(trailerCount);
     }
 

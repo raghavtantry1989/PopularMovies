@@ -11,6 +11,7 @@ public class Movie implements Serializable {
     private double mUserRating;
     private String mReleaseData;
     private String mRuntime;
+    private boolean is_favorite;
     private ArrayList<String> mVideoKeys;
     private ArrayList<String> mReviews;
 
@@ -71,6 +72,14 @@ public class Movie implements Serializable {
 
     public void setmReviews(ArrayList<String> mReviews) {
         this.mReviews = mReviews;
+    }
+
+    public boolean isIs_favorite() {
+        return is_favorite;
+    }
+
+    public void setIs_favorite(boolean is_favorite) {
+        this.is_favorite = is_favorite;
     }
 
 }

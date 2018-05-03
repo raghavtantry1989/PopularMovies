@@ -5,6 +5,8 @@
 
     <string name="action_settings">Settings</string>
 
+    <string name="action_star">Favorite</string>
+
     <!-- Label for the sort order preference [CHAR LIMIT=30] -->
     <string name="pref_sort_order_label">Sort By</string>
 
@@ -36,7 +38,7 @@
     <string name="review">Review</string>
     <string name="trailers">Trailers</string>
     <string name="play_icon">Play Icon</string>
-    <string name="trailer_word">Trailer</string>
+    <string name="trailer_word">Trailer </string>
     <string name="no_reviews">No Reviews yet</string>
     <string name="mark_as_favorite">Mark as Favorite</string>
 

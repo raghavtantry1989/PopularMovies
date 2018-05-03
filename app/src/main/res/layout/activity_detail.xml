@@ -58,23 +58,34 @@
                         android:layout_marginBottom="24dp"
                         android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
-                    <TextView
-                        android:id="@+id/tv_marked_indicator"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="24dp"
-                        android:textColor="@color/colorAccent"
-                        android:text="@string/marked_as_favorite"
-                        android:visibility="gone"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                        android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/btn_make_favorite"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:onClick="markAsFavorite"
-                        android:text="@string/mark_as_favorite"
-                        android:textColor="@android:color/white" />
+                        <Button
+                            android:id="@+id/btn_make_favorite"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:onClick="markAsFavorite"
+                            android:text="@string/mark_as_favorite"
+                            android:textColor="@android:color/white" />
+
+                        <TextView
+                            android:id="@+id/tv_marked_indicator"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="24dp"
+                            android:textColor="@color/colorAccent"
+                            android:text="@string/marked_as_favorite"
+                            android:onClick="unMarkAsFavorite"
+                            android:visibility="gone"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
 

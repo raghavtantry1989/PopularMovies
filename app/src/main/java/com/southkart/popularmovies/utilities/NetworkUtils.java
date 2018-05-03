@@ -24,7 +24,7 @@ public final class NetworkUtils {
     public static final String IMAGE_SIZE = "w185";
 
     private static final String API_PARAM = "api_key";
-    private static final String API_KEY = "/* Place API Key Here */";
+    private static final String API_KEY = "/* Place API Key here */";
 
     private static final String LANGUAGE_PARAM = "language";
     private static final String LANGUAGE_VALUE = "en-US";

@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.net.Uri;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
@@ -64,6 +65,12 @@ public class DetailActivity extends AppCompatActivity implements
     private TextView mMarkedIndicator;
 
     private static final int MOVIE_DETAIL_LOADER = 200;
+
+    public static final String[] MOVIES_PROJECTION = {
+            MovieContract.MovieEntry._ID,
+            MovieContract.MovieEntry.COLUMN_API_ID,
+            MovieContract.MovieEntry.COLUMN_THUMBNAIL_URL,
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,8 +170,18 @@ public class DetailActivity extends AppCompatActivity implements
 
                     // Fetch json data
                     String jsonMovieReviewsResponse = NetworkUtils.getResponseFromHttpUrl(movieReviewUrl);
-
                     movie = JsonUtils.getMovieReviewsFromJSON(jsonMovieReviewsResponse, movie);
+                    int isMovieFavorite = -1;
+                    try {
+                        Uri uriToCheck = MovieContract.MovieEntry.buildMovieUriWithId(mMovieId);
+                        isMovieFavorite = getContentResolver().query(uriToCheck, null, null, null, null).getCount();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+                    if(isMovieFavorite == 1){
+                        movie.setIs_favorite(true);
+                    }
 
                     return movie;
 
@@ -213,6 +230,10 @@ public class DetailActivity extends AppCompatActivity implements
             mMovieRatings.setText(movie.getmUserRating());
             mMovieSynopsis.setText(movie.getmSynopsis());
             mTrailerAdapter.setVideoKeys(movie.getmVideoKeys());
+            if(movie.isIs_favorite()){
+                mButton.setVisibility(View.GONE);
+                mMarkedIndicator.setVisibility(View.VISIBLE);
+            }
 
             ArrayList<String> reviews = movie.getmReviews();
             if(reviews.size() > 0){
@@ -236,7 +257,7 @@ public class DetailActivity extends AppCompatActivity implements
     public void onClick(String videoKey) {
         String youtubeKey = NetworkUtils.buildYoutubeUrl(videoKey).toString();
         Intent webIntent = new Intent(Intent.ACTION_VIEW,
-                Uri.parse(videoKey));
+                Uri.parse(youtubeKey));
 
         if (webIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(webIntent);
@@ -280,8 +301,24 @@ public class DetailActivity extends AppCompatActivity implements
             Context context = DetailActivity.this;
             String textToShow = "Movie set a as favorite";
             Toast.makeText(context, textToShow, Toast.LENGTH_SHORT).show();
-            mButton.setVisibility(View.INVISIBLE);
+            mButton.setVisibility(View.GONE);
             mMarkedIndicator.setVisibility(View.VISIBLE);
+        }
+    }
+
+
+    public void unMarkAsFavorite(View view) {
+        int count = 0;
+        try {
+            Uri uriToCheck = MovieContract.MovieEntry.buildMovieUriWithId(mMovieId);
+            count = getContentResolver().delete(uriToCheck, null,null);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        if(count == 1){
+            mButton.setVisibility(View.VISIBLE);
+            mMarkedIndicator.setVisibility(View.GONE);
         }
     }
 }

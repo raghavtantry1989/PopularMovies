@@ -2,6 +2,7 @@ package com.southkart.popularmovies.data;
 
 import android.net.Uri;
 import android.provider.BaseColumns;
+import android.util.Log;
 
 public class MovieContract {
 
@@ -23,9 +24,10 @@ public class MovieContract {
         public static final String COLUMN_API_ID = "api_id";
         public static final String COLUMN_THUMBNAIL_URL = "thumbnail_url";
 
-        public static Uri buildMovieUriWithId(int id) {
-            return CONTENT_URI.buildUpon()
-                    .appendPath(Integer.toString(id))
+        public static Uri buildMovieUriWithId(String id) {
+            return BASE_CONTENT_URI.buildUpon()
+                    .appendPath(PATH_MOVIES)
+                    .appendPath(id)
                     .build();
         }
     }

@@ -77,7 +77,7 @@ public class MovieProvider extends ContentProvider {
                 retCursor = db.query(
                         MovieContract.MovieEntry.TABLE_NAME,
                         projection,
-                        MovieContract.MovieEntry._ID + " = ?",
+                        MovieContract.MovieEntry.COLUMN_API_ID + " = ?",
                         selectionArguments,
                         null,
                         null,
@@ -181,7 +181,8 @@ public class MovieProvider extends ContentProvider {
             case CODE_MOVIE_WITH_ID:
                 // Get the movie ID from the URI path
                 String id = uri.getPathSegments().get(1);
-                movieDeleted = db.delete(MovieContract.MovieEntry.TABLE_NAME, "_id=?", new String[]{id});
+                selection = MovieContract.MovieEntry.COLUMN_API_ID + "=?";
+                movieDeleted = db.delete(MovieContract.MovieEntry.TABLE_NAME, selection, new String[]{id});
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
