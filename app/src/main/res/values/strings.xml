@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+
+    <string name="content_authority">com.southkart.popularmovies</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- Label for the sort order preference [CHAR LIMIT=30] -->
+    <string name="pref_sort_order_label">Sort By</string>
+
+    <!-- Key name for sort order preference in SharedPreferences [CHAR LIMIT=NONE] -->
+    <string name="pref_sort_order_key" translatable="false">sort_by</string>
+
+    <!-- Label for the Most Popular Option [CHAR LIMIT=30] -->
+    <string name="pref_sort_order_label_most_popular">Most Popular</string>
+
+    <!-- Value name for Most Popular Option in SharedPreferences [CHAR LIMIT=NONE] -->
+    <string name="pref_sort_order_value_most_popular" translatable="false">popular</string>
+
+
+    <!-- Label for the Top Rated Option [CHAR LIMIT=30] -->
+    <string name="pref_sort_order_label_top_rated">Top Rated</string>
+
+    <!-- Value name for Top Rated Option in SharedPreferences [CHAR LIMIT=NONE] -->
+    <string name="pref_sort_order_value_top_rated" translatable="false">top_rated</string>
+
+
+    <!-- Label for the Favorites Option [CHAR LIMIT=30] -->
+    <string name="pref_sort_order_label_favorites">Favorites</string>
+
+    <!-- Value name for Favorites Option in SharedPreferences [CHAR LIMIT=NONE] -->
+    <string name="pref_sort_order_value_favorites" translatable="false">favorites</string>
+
+    <string name="error_message">Failed to get results, please try again.</string>
+    <string name="overview">Overview</string>
+    <string name="review">Review</string>
+    <string name="trailers">Trailers</string>
+    <string name="play_icon">Play Icon</string>
+    <string name="trailer_word">Trailer</string>
+    <string name="no_reviews">No Reviews yet</string>
+    <string name="mark_as_favorite">Mark as Favorite</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="marked_as_favorite">Marked as Favorite</string>
+</resources>
